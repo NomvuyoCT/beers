@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Bier</title>
+    <script src="js/bier.js" type="module" defer></script>
+    <link rel="stylesheet" href="css/beers.css">
 </head>
 <body>
-$END$
+<div>
+    <a href="index.html">Welkom</a>
+    <a href="brouwers.html">Brouwers</a>
+    <div id="bierInfo" hidden>
+        <h1 id="bierNaam"></h1>
+        <p class="bold">Alcohol<br><span id="alcohol" class="normal"></span> </p>
+        <p class="bold">Prijs<br><span id="prijs" class="normal"></span> </p>
+        <button id="mandje">In Mandje</button>
+    </div>
+</div>
+<div id="storing" class="fout" hidden>Storing, contacteer helpdesk.</div>
+
 </body>
 </html>

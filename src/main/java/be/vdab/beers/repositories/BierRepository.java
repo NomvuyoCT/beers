@@ -1,4 +1,4 @@
-package be.vdab.beers.repository;
+package be.vdab.beers.repositories;
 
 import be.vdab.beers.domain.Bier;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
@@ -22,7 +22,7 @@ public class BierRepository {
                     result.getBigDecimal("prijs"), result.getInt("besteld"));
     public int aantalBieren(){
         var sql = """
-                select count(id)
+                select count(id) as aantal
                 from bieren
                 """;
         return template.queryForObject(sql, Integer.class);
@@ -42,6 +42,19 @@ public class BierRepository {
                 select id, naam, brouwerId, alcohol, prijs, besteld
                 from bieren
                 where id = ?
+                """;
+            return Optional.of(template.queryForObject(sql, bierRowMapper, id));
+        } catch (IncorrectResultSizeDataAccessException ex){
+            return Optional.empty();
+        }
+    }
+    public Optional<Bier> findAndLockById(long id){
+        try {
+            var sql = """
+                select id, naam, brouwerId, alcohol, prijs, besteld
+                from bieren
+                where id = ?
+                for update 
                 """;
             return Optional.of(template.queryForObject(sql, bierRowMapper, id));
         } catch (IncorrectResultSizeDataAccessException ex){

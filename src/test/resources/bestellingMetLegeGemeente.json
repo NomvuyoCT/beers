@@ -1,0 +1,20 @@
+{
+  "bestelling": {
+    "naam": "testnaam",
+    "straat": "teststraat",
+    "huisnummer": "4",
+    "postcode": 1200,
+    "gemeente": ""
+  },
+  "bieren": [
+    {
+      "id": 7,
+      "naam": "Aardbeien witbier",
+      "brouwerId": 56,
+      "alcohol": 2.50,
+      "prijs": 8.00,
+      "besteld": 3
+    }
+  ]
+
+}

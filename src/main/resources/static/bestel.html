@@ -1,10 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Bestel</title>
+  <script src="js/bestel.js" type="module" defer></script>
+  <link rel="stylesheet" href="css/beers.css">
 </head>
 <body>
-$END$
+<div>
+    <a href="index.html">Welkom</a>
+    <a href="brouwers.html">Brouwers</a>
+    <div>
+        <h1>Mandje</h1>
+        <table id="mandje" hidden>
+            <thead>
+            <tr>
+                <th>Bier</th>
+                <th>Prijs</th>
+            </tr>
+            </thead>
+            <tbody id="bierenBody"></tbody>
+        </table>
+        <br>
+    </div>
+    <div>
+        <label>Naam
+            <span id="naamFout" class="fout" hidden>Verplicht</span>
+            <input id="naam" required autofocus>
+        </label>
+        <label>Straat
+        <span id="straatFout" class="fout" hidden>Verplicht</span>
+            <input id="straat" required>
+        </label>
+        <label>Huisnummer
+            <span id="huisnummerFout" class="fout" hidden>Verplicht</span>
+            <input id="huisnummer" required>
+        </label>
+        <label>Postcode
+            <span id="postcodeFout" class="fout" hidden>Waarde tussen 1000 en 9999</span>
+            <input id="postcode" required type="number" min="1000" max="9999">
+        </label>
+        <label>Gemeente
+            <span id="gemeenteFout" class="fout" hidden>Verplicht</span>
+            <input id="gemeente" required>
+        </label>
+        <button id="bestellen">Bestellen</button>
+    </div>
+</div>
+<div id="storing" class="fout" hidden>Storing, contacteer helpdesk.</div>
+
 </body>
 </html>

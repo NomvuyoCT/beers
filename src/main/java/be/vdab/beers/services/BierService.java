@@ -1,7 +1,8 @@
-package be.vdab.beers.service;
+package be.vdab.beers.services;
 
 import be.vdab.beers.domain.Bier;
-import be.vdab.beers.repository.BierRepository;
+import be.vdab.beers.exceptions.BierNietGevondenException;
+import be.vdab.beers.repositories.BierRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +16,16 @@ public class BierService {
     public BierService(BierRepository bierRepository) {
         this.bierRepository = bierRepository;
     }
+
+    public int aantalBieren(){
+        return bierRepository.aantalBieren();
+    }
     public List<Bier> findBierenByBrouwerId(long brouwerId){
         return bierRepository.findBierenByBrouwerId(brouwerId);
+    }
+    public Bier findBierById(long id){
+        var bier = bierRepository.findBierById(id)
+                .orElseThrow(() -> new BierNietGevondenException(id));
+        return bier;
     }
 }

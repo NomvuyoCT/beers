@@ -1,7 +1,7 @@
-package be.vdab.beers.service;
+package be.vdab.beers.services;
 
 import be.vdab.beers.domain.Brouwer;
-import be.vdab.beers.repository.BrouwerRepository;
+import be.vdab.beers.repositories.BrouwerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

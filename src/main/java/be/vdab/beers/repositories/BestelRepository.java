@@ -1,4 +1,4 @@
-package be.vdab.beers.repository;
+package be.vdab.beers.repositories;
 
 import be.vdab.beers.domain.Bestelling;
 import org.springframework.jdbc.core.JdbcTemplate;

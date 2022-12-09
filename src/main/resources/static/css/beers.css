@@ -1,6 +1,7 @@
 body {
     background-color: #FFFFDE;
     font-family: sans-serif;
+    color: saddlebrown;
 }
 
 dd, dt {
@@ -56,21 +57,22 @@ nav li a:hover {
 }
 
 button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
+    background-color: gainsboro;
+    border:solid;
+    border-radius: 5px;
+    color: #5C3004;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: normal;
     outline: 0;
     padding: 8px 16px;
 }
 
 button:hover {
-    background-color: #3e8e41;
+    background-color: lightgray;
 }
 
 button:active, button:hover {
-    background-color: #3ecc41;
+    background-color: lightgray;
 }
 
 button:disabled {
@@ -81,14 +83,12 @@ button:disabled {
 table,
 td,
 th {
-    border: 1px solid silver;
     border-collapse: collapse;
     padding: 5px 5px;
 }
 
 th {
-    color: white;
-    background-color: #4CAF50;
+    background-color: #FFFFDE;
 }
 
 td {
@@ -102,4 +102,24 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
     background-color: #FAFAFA;
+}
+tr:last-child{
+    background-color: #FFFFDE;
+}
+.bold {
+    font-weight: bold;
+}
+.normal{
+    font-weight: normal;
+}
+.even{
+    background-color:gold;
+    margin: 0;
+}
+.odd{
+    background-color: #FAFAFA;
+    margin: 0;
+}
+.toTheRight {
+    text-align: right;
 }
