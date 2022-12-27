@@ -33,13 +33,19 @@ class BierControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
                 "select id from bieren where naam = 'testnaam1'", Long.class
         );
     }
+    private int totaalAantalBieren(){
+        return jdbcTemplate.queryForObject(
+                "select count(id) from bieren", Integer.class
+        );
+    }
 
     @Test
     void aantalBieren() throws Exception {
+        var aantalBieren = totaalAantalBieren();
         mockMvc.perform(get("/bieren"))
                 .andExpectAll(
                         status().isOk());
-        assertThat(countRowsInTable(BIEREN)).isEqualTo(1188);
+        assertThat(countRowsInTable(BIEREN)).isEqualTo(aantalBieren);
     }
 
     @Test

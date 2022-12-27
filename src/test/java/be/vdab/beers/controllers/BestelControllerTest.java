@@ -32,23 +32,29 @@ class BestelControllerTest extends AbstractTransactionalJUnit4SpringContextTests
         this.mockMvc = mockMvc;
     }
 
-    private Bier findTestBier(){
+    private long idVanTestBier(){
         return jdbcTemplate.queryForObject(
-                "select id, naam, alcohol, prijs, besteld from bieren where naam = 'testnaam'",
-                Bier.class
+                "select id from bieren where naam = 'testnaam1'", Long.class
+        );
+    }
+    private int aantalBesteldVanTestBier(){
+        return jdbcTemplate.queryForObject(
+                "select besteld from bieren where naam = 'testnaam1'", Integer.class
         );
     }
 
     @Test
     void bestel() throws Exception {
+        var id = idVanTestBier();
+        var besteld = aantalBesteldVanTestBier();
         var jsonData = Files.readString(TEST_RESOURCES.resolve("correcteBestelling.json"));
         mockMvc.perform(post("/bestellingen")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonData))
                 .andExpect(status().isOk());
         assertThat(countRowsInTableWhere(BESTELLINGEN, "naam = 'testnaam'")).isOne();
-        assertThat(countRowsInTableWhere(BESTELLIJNEN, "bierId = 7")).isOne();
-        assertThat(countRowsInTableWhere(BIEREN, "naam = 'Aardbeien witbier' and besteld = 4")).isOne();
+        assertThat(countRowsInTableWhere(BESTELLIJNEN, "bierId = " + id)).isOne();
+        assertThat(countRowsInTableWhere(BIEREN, "naam = 'testnaam1' and besteld = " + besteld)).isOne();
 
     }
 
